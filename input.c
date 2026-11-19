@@ -6,7 +6,7 @@
 
 int readMove(int *r1, int *c1, int *r2, int *c2)
 {
-    char line[LINE_SIZE];
+    char line[LINE_SIZE] = "";
     char extra[2];
     int ch;
 
