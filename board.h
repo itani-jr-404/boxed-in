@@ -4,6 +4,11 @@
 #define BOX_ROWS 4
 #define BOX_COLS 5
 
+#define MOVE_OK 0
+#define MOVE_OUT_OF_RANGE 1
+#define MOVE_NOT_ADJACENT 2
+#define MOVE_TAKEN 3
+
 typedef struct {
     int rows;
     int cols;
@@ -16,5 +21,8 @@ typedef struct {
 Board *createBoard(int rows, int cols);
 void freeBoard(Board *board);
 void printBoard(const Board *board);
+int checkMove(const Board *board, int r1, int c1, int r2, int c2);
+int drawLine(Board *board, int r1, int c1, int r2, int c2, char player);
+int isBoardFull(const Board *board);
 
 #endif

@@ -108,3 +108,70 @@ void printBoard(const Board *board)
         }
     }
 }
+
+static int isDot(const Board *board, int r, int c)
+{
+    return r >= 0 && r <= board->rows && c >= 0 && c <= board->cols;
+}
+
+int checkMove(const Board *board, int r1, int c1, int r2, int c2)
+{
+    if (!isDot(board, r1, c1) || !isDot(board, r2, c2)) {
+        return MOVE_OUT_OF_RANGE;
+    }
+
+    if (r1 == r2 && abs(c1 - c2) == 1) {
+        if (board->hLines[r1][c1 < c2 ? c1 : c2]) {
+            return MOVE_TAKEN;
+        }
+        return MOVE_OK;
+    }
+    if (c1 == c2 && abs(r1 - r2) == 1) {
+        if (board->vLines[r1 < r2 ? r1 : r2][c1]) {
+            return MOVE_TAKEN;
+        }
+        return MOVE_OK;
+    }
+    return MOVE_NOT_ADJACENT;
+}
+
+/* Gives box (r, c) to player if all four sides are drawn. */
+static int claimBox(Board *board, int r, int c, char player)
+{
+    if (r < 0 || r >= board->rows || c < 0 || c >= board->cols) {
+        return 0;
+    }
+    if (!board->hLines[r][c] || !board->hLines[r + 1][c]
+        || !board->vLines[r][c] || !board->vLines[r][c + 1]) {
+        return 0;
+    }
+    board->owners[r][c] = player;
+    board->claimed++;
+    return 1;
+}
+
+/* Draws a line that already passed checkMove and returns the number of
+   boxes it completed (0, 1 or 2). */
+int drawLine(Board *board, int r1, int c1, int r2, int c2, char player)
+{
+    int r, c;
+    int completed = 0;
+
+    if (r1 == r2) {
+        c = c1 < c2 ? c1 : c2;
+        board->hLines[r1][c] = 1;
+        completed += claimBox(board, r1 - 1, c, player);
+        completed += claimBox(board, r1, c, player);
+    } else {
+        r = r1 < r2 ? r1 : r2;
+        board->vLines[r][c1] = 1;
+        completed += claimBox(board, r, c1 - 1, player);
+        completed += claimBox(board, r, c1, player);
+    }
+    return completed;
+}
+
+int isBoardFull(const Board *board)
+{
+    return board->claimed == board->rows * board->cols;
+}
