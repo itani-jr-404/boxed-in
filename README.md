@@ -57,6 +57,9 @@ The script installs gcc, make, gdb and valgrind, builds the game, copies it to
 it exits, init starts it again. A normal login is still available on tty2
 (Alt+F2).
 
+If the VM window is a serial console instead of a normal screen, run
+`sh alpine/setup.sh ttyAMA0` so the game starts there.
+
 ## Complexity
 
 Let the board have R x C boxes (here 4 x 5).
