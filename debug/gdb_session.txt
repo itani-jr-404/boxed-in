@@ -1,0 +1,30 @@
+Breakpoint 1 at 0x1874: file board.c, line 158.
+Breakpoint 2 at 0x1704: file board.c, line 141.
+
+Breakpoint 1, drawLine (board=0xaaaaaaac0c60, r1=0, c1=0, r2=0, c2=1, player=65 'A') at board.c:158
+158	    int completed = 0;
+board = 0xaaaaaaac0c60
+r1 = 0
+c1 = 0
+r2 = 0
+c2 = 1
+player = 65 'A'
+
+Breakpoint 2, claimBox (board=0xaaaaaaac0c60, r=0, c=0, player=65 'A') at board.c:141
+141	    if (r < 0 || r >= board->rows || c < 0 || c >= board->cols) {
+#0  claimBox (board=0xaaaaaaac0c60, r=0, c=0, player=65 'A') at board.c:141
+#1  0x0000aaaaaaaa1908 in drawLine (board=0xaaaaaaac0c60, r1=0, c1=0, r2=0, c2=1, player=65 'A') at board.c:164
+#2  0x0000aaaaaaaa0f04 in runGame (game=0xfffffffffd10) at game.c:80
+#3  0x0000aaaaaaaa0b38 in main () at main.c:18
+$1 = {rows = 4, cols = 5, hLines = 0xaaaaaaac0c90, vLines = 0xaaaaaaac0cc0, owners = 0xaaaaaaac0cf0, claimed = 0}
+0x0000aaaaaaaa1908 in drawLine (board=0xaaaaaaac0c60, r1=0, c1=0, r2=0, c2=1, player=65 'A') at board.c:164
+164	        completed += claimBox(board, r1, c, player);
+Value returned is $2 = 0
+Breakpoint 3 at 0xaaaaaaaa1704: file board.c, line 141.
+Breakpoint 3, claimBox (board=0xaaaaaaac0c60, r=3, c=4, player=66 'B') at board.c:141
+141	    if (r < 0 || r >= board->rows || c < 0 || c >= board->cols) {
+$3 = 0 '\000'
+$4 = 0 '\000'
+0x0000aaaaaaaa1908 in drawLine (board=0xaaaaaaac0c60, r1=3, c1=4, r2=3, c2=5, player=66 'B') at board.c:164
+164	        completed += claimBox(board, r1, c, player);
+Value returned is $5 = 0
