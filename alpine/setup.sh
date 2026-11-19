@@ -17,6 +17,9 @@ sed -i "/^#*$TTY::/d" /etc/inittab
 echo "$TTY::respawn:/usr/local/bin/dotsandboxes" >> /etc/inittab
 grep "^$TTY" /etc/inittab
 
+# tty0 and console point at the same screen, so a login there would fight the game
+sed -i 's|^\(tty0::.*\)|#\1|; s|^\(console::.*getty.*\)|#\1|' /etc/inittab
+
 # keep kernel messages from printing over the board
 echo "kernel.printk = 1 4 1 7" > /etc/sysctl.d/quiet-console.conf
 
