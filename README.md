@@ -1,6 +1,7 @@
 # Dots and Boxes
 
-CMPS 241 course project (Fall 2026/27), Team 5: Ali Al Itani and Mohamad Alame.
+CMPS 241 course project (Fall 2026/27)
+Made by: Team 5: Ali Al Itani and Mohamad Alame.
 
 A console version of Dots and Boxes written in C. The board has 4 x 5 boxes
 (5 rows and 6 columns of dots).
