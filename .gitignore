@@ -1,0 +1,5 @@
+*.o
+dotsandboxes
+vgcore.*
+.DS_Store
+.vscode/
