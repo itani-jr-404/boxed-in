@@ -1,0 +1,7 @@
+CMPS 241 - Dots and Boxes Project (Fall 2026/27)
+
+Team 5
+- Ali Al Itani (aha165@mail.aub.edu)
+- Mohamad Alame (mha141@mail.aub.edu)
+
+GitHub repository: https://github.com/itani-jr-404/boxed-in
