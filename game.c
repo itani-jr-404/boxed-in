@@ -50,7 +50,7 @@ int initGame(Game *game)
     return game->board != NULL;
 }
 
-void runGame(Game *game)
+int runGame(Game *game)
 {
     int r1, c1, r2, c2;
     int status, gained;
@@ -64,7 +64,7 @@ void runGame(Game *game)
         status = readMove(&r1, &c1, &r2, &c2);
         if (status == INPUT_END) {
             printf("\nNo more input, the game was stopped.\n");
-            return;
+            return 0;
         }
         if (status == INPUT_BAD) {
             printf("Invalid input: enter 4 numbers, for example 0 0 0 1\n");
@@ -90,6 +90,7 @@ void runGame(Game *game)
         printBoard(game->board);
     }
     printWinner(game);
+    return 1;
 }
 
 void endGame(Game *game)
