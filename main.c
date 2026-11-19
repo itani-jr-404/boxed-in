@@ -1,17 +1,16 @@
 #include <stdio.h>
-#include "board.h"
+#include "game.h"
 
 int main(void)
 {
-    Board *board;
+    Game game;
 
-    board = createBoard(BOX_ROWS, BOX_COLS);
-    if (board == NULL) {
+    if (!initGame(&game)) {
         printf("Error: could not create the board.\n");
         return 1;
     }
 
-    printBoard(board);
-    freeBoard(board);
+    runGame(&game);
+    endGame(&game);
     return 0;
 }
