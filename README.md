@@ -36,6 +36,7 @@ an existing line) is rejected and the same player is asked again.
 | `input.c/h` | reads one move from the keyboard |
 | `tests/` | input files used for testing and Valgrind |
 | `debug/` | GDB commands, Valgrind and GDB output, debugging notes |
+| `screenshots/` | screenshots from the Alpine VM: game, build, Valgrind, GDB |
 | `alpine/setup.sh` | sets up the Alpine VM to start the game on boot |
 
 ## Debugging
